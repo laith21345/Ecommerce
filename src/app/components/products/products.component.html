@@ -1,0 +1,18 @@
+<section class="m-3">
+
+    <div class="container mt-3">
+        <!--========Search===========-->
+        <div>
+            <input [(ngModel)]="text" class="form-control w-75 mx-auto" type="text" placeholder="Search By Name ..." >
+        </div>
+        <!--=========Items=============-->
+        <div class="row g-3 my-4">
+            @for (p of productsList| searchForProductByTitle : text ; track p._id) {
+            <div class="col-lg-6 col-xl-3">
+                <app-product-card [isInWishInp]="true" [product]="p" ></app-product-card>
+            </div>
+            }
+        </div>
+
+    </div>
+</section>

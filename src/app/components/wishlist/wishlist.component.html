@@ -1,0 +1,39 @@
+<section class="container-lg bg-main-light rounded-2 shadow py-4 px-3 my-4">
+    @if (wishlistInfo().count!=0) {
+    
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class=" mb-5 text-main h4 fw-bolder">Wishlist</h1>
+            <p>total number of items: <span class="text-main">{{wishlistInfo().count}}</span></p>
+        </div>
+        @for (item of wishlistInfo().data; track item.id) {
+            <div class="row align-items-center g-3 mt-2 py-1 border-bottom border-1">
+                <div class="col-5 col-lg-2">
+                    <div>
+                        <img [src]="item.imageCover" [alt]="item.title | trimText : 2">
+                    </div>
+                </div>
+                <div class="col-6 col-lg-10">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h2 class="h6 fw-bolder">{{item.title | trimText : 2}}</h2>
+                            <span class="text-main">{{item.price | currency : 'GBP'}}</span><br>
+                            <button (click)="removeItem(item.id)" class="btn btn-outline-danger mt-5">
+                                <i class="fa-solid fa-trash"></i>
+                                Remove
+                            </button>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <button (click)="addToCart(item.id)" class="btn-main d-block w-100 ">
+                                Add to cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    }@else {
+        <h1 class="fw-bolder text-danger text-capitalize text-center">NO Wishlist Item</h1>
+    }
+</section>

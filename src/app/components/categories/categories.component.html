@@ -1,0 +1,12 @@
+<section class="my-5 pt-5 container">
+    <div class="row g-5">
+        @for (c of categoriesList() ; track c._id) {
+        <div class="col-12 col-lg-6 col-xl-4">
+            <div (click)="getCategoryInfo(c._id)" class="product" >
+                <img [src]="c.image" [alt]="c.name" class="object-fit-cover" style="height: 300px;">
+                <h1 class=" mt-2 h5 fw-bolder">{{c.name}}</h1>
+            </div>
+        </div>
+        }
+    </div>
+</section>

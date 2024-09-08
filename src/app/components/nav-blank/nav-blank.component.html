@@ -1,0 +1,99 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid align-items-baseline">
+        <a class="navbar-brand" routerLink="home" >
+            <img src="./assets/images/freshcart-logo.svg">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav align-items-lg-baseline w-100">
+                
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="home" routerLinkActive="active-link" >
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="products" routerLinkActive="active-link" >
+                        products
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="cart" routerLinkActive="active-link" >
+                        cart
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="wishlist" routerLinkActive="active-link" >
+                        Wishlist
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="categories" routerLinkActive="active-link" >
+                        categories
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="brands" routerLinkActive="active-link" >
+                        brands
+                    </a>
+                </li>
+                <li class="nav-item ms-lg-4 mt-3 mt-lg-0 "
+                    [ngClass]="{
+                        'd-none':!isAnOrderNav()
+                    }"
+                >
+                    <a class="nav-link fw-bolder text-decoration-underline" routerLink="allorders" routerLinkActive="bg-info rounded-2" >
+                        allorders
+                    </a>
+                </li>
+                <li class="nav-item  ms-lg-auto mt-1 mt-lg-0">
+                    <ul class="ps-0 d-flex flex-wrap align-items-center">
+
+                        <li class="p-2">
+                            <a class="cr">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="p-2">
+                            <a class="cr">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                        </li>
+                        <li class="p-2">
+                            <a class="cr">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="p-2">
+                            <a class="cr">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                        </li>
+                        <li class="p-2">
+                            <a class="cr">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="p-2">
+                            <a class="cr">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li class="p-2 ms-auto">
+                            <span class="position-relative p-3" routerLink="/cart">
+                                <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                                <small class=" badge bg-info rounded-circle position-absolute top-0 end-0">{{navCartCount()}}</small>
+                            </span> 
+                            <button class="btn btn-danger mx-3 px-2" (click)="_AuthService.logout()">Logout</button>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+</nav>

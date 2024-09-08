@@ -1,0 +1,12 @@
+<section class="my-5 container bg-light ">
+    @if(allOrdersList){
+
+        <h1>Order<small>/s</small> Id<small>/s</small></h1>
+        @for (item of allOrdersList; track $index) {
+            <p class="my-3">{{$index+1}}: {{item.id}}</p>
+        }
+    }@else {
+        <h1>no orders you have</h1>
+    }
+    
+</section>

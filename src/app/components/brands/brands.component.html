@@ -1,0 +1,13 @@
+<section class="my-5 container">
+    <h1 class="text-main fw-bolder text-center my-3">All Brands</h1>
+    <div class="row g-5">
+        @for (c of brandsList() ; track c._id) {
+        <div class="col-6 col-lg-4 col-xl-3">
+            <div (click)="getBrandInfo(c._id)" class="product  border p-3" >
+                <img [src]="c.image" [alt]="c.name" class="object-fit-cover" >
+                <h2 class=" mt-2 h6 fw-light text-center">{{c.name}}</h2>
+            </div>
+        </div>
+        }
+    </div>
+</section>

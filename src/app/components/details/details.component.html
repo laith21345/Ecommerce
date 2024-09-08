@@ -1,0 +1,44 @@
+@if (productInfo) {
+<section class="my-5 px-lg-5">
+    <div class="row g-4 align-items-center">
+        <div class="col-lg-4">
+            <div class="cr">
+                <owl-carousel-o [options]="customOptions">
+                    @for (image of productInfo.images; track $index) {
+                        <ng-template carouselSlide>
+                            <img [src]="image" [alt]="productInfo.subcategory[0].name">
+                        </ng-template>
+                    }
+                </owl-carousel-o>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div>
+                <h1 class="h4 fw-bolder">{{productInfo.title}}</h1>
+                <p class=" small ms-3 my-3">{{productInfo.description}}</p>
+                <h2 class="h6">{{productInfo.category.name}}</h2>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span>{{productInfo.price}} EGP</span>
+                    <span>
+                        @for (i of [1,2,3,4,5].slice(0,productInfo.ratingsAverage); track $index) {
+                        <i class="fa-solid fa-star rating-color"></i>
+                        }
+                        @if (productInfo.ratingsAverage % 1 ) {
+                        <i class="fa-regular fa-star-half-stroke rating-color"></i>
+                        }
+                        {{productInfo.ratingsAverage}}
+                    </span>
+                </div>
+                <div class="mt-4 w-75 mx-auto d-flex">
+                    <button (click)="addToCart(productInfo._id)" class="btn-main d-block w-100 ">
+                        <i class="fa-solid fa-plus fa-2xs d-inline-block bg-info"></i>
+                        add to cart
+                    </button>
+                    <i class="fa-solid fa-heart fs-3 cr ms-1 d-inline-block"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+}

@@ -1,0 +1,40 @@
+<div class="product py-3">
+    <div [routerLink]="['/details', product()._id]" class="cr">
+        <div class="px-1">
+            <img [src]="product().imageCover" alt="{{product().title | trimText : 2}}">
+        </div>
+        <div class="mt-1 px-2">
+            <h3 class="small fw-bold text-main">{{product().title | trimText : 2}}</h3>
+            <p class="fw-bold small mt-2">{{product().description .split(" ",2).join(" ")}}</p>
+            <div class="d-flex justify-content-between">
+                <div>
+                    <span>{{product().price}} EGP</span>
+                </div>
+                <div>
+                    @for (i of [1,2,3,4,5].slice(0,product().ratingsAverage); track $index) {
+                    <i class="fa-solid fa-star rating-color"></i>
+                    }
+                    @if (product().ratingsAverage % 1 ) {
+                    <i class="fa-regular fa-star-half-stroke rating-color"></i>
+                    }
+                    <span>{{product().ratingsAverage}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 w-75 mx-auto d-flex">
+        <button (click)="addToCart()" class="btn-main d-block w-100 ">
+            <i class="fa-solid fa-plus fa-2xs d-inline-block bg-info"></i>
+            Add
+        </button>
+
+        <button class="btn">
+            @if (isInWish()) {
+                <i (click)="removeFromWishlist()" class="text-danger fa-solid fa-heart fs-3 cr ms-1 d-inline-block"></i>
+            }@else {
+                <i (click)="addToWishlist()" class="fa-solid fa-heart fs-3 cr ms-1 d-inline-block"></i>
+            }
+        </button>
+
+    </div>
+</div>

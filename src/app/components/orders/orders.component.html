@@ -1,0 +1,69 @@
+<section class="w-75 mx-auto bg-main-light px-2 py-4 my-3 shadow rounded-2">
+
+    <h1 class="h3 mb-4 fw-medium text-main">Delivery information :</h1>
+    <form [formGroup]="shippingAddressForm" (ngSubmit)="submitShippingAddressForm()">
+
+
+        <div class="mt-2">
+            <label for="details">details :</label>
+            <textarea formControlName="details" id="details" class="form-control"></textarea>
+
+            @if (shippingAddressForm.get('details')?.errors && shippingAddressForm.get('details')?.touched) {
+
+            <div class="alert alert-danger mt-1">
+                <p class="m-0">details is Required</p>
+            </div>
+
+            }
+
+        </div>
+
+
+        <div class="mt-2">
+            <label for="phone">phone :</label>
+            <input formControlName="phone" id="phone" [ngClass]="{
+                'is-invalid': shippingAddressForm.get('phone')?.errors && (shippingAddressForm.get('phone')?.touched || shippingAddressForm.get('phone')?.dirty),
+                'is-valid': !shippingAddressForm.get('phone')?.errors
+
+            }" class="form-control" type="tel">
+
+            @if (shippingAddressForm.get('phone')?.errors && shippingAddressForm.get('phone')?.touched) {
+
+            <div class="alert alert-danger mt-1">
+                @if (shippingAddressForm.get('phone')?.getError('required')) {
+                <p class="m-0">phone is Required</p>
+                }
+                @else if (shippingAddressForm.get('phone')?.getError('pattern')) {
+                <p class="m-0">Invalid Phone</p>
+                }
+            </div>
+
+            }
+
+        </div>
+
+        <div class="mt-2">
+            <label for="city">city :</label>
+            <input formControlName="city" id="city" class="form-control" type="text">
+
+            @if (shippingAddressForm.get('city')?.errors && shippingAddressForm.get('city')?.touched) {
+
+            <div class="alert alert-danger mt-1">
+                @if (shippingAddressForm.get('city')?.getError('required')) {
+                <p class="m-0">city is Required</p>
+                }
+            </div>
+            }
+        </div>
+
+        <button (click)="submitShippingAddressForm()" type="submit"
+            [disabled]="shippingAddressForm.invalid || isLoading || msgSuccess" 
+            class="btn btn-outline-info mt-3 w-100 ">
+            check out
+            @if(isLoading){
+            <i class="fas fa-spin fa-spinner"></i>
+            }
+        </button>
+
+    </form>
+</section>
